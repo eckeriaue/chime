@@ -14,10 +14,10 @@
       <mat-divider />
       <div class="p-3 flex justify-end gap-x-3">
         <button matIconButton>
-          <mat-icon>headphones</mat-icon>
+          <mat-icon>{{ isHeadphonesEnabled() ? 'headset' : 'headset_off' }}</mat-icon>
         </button>
         <button matIconButton>
-          <mat-icon>microphone</mat-icon>
+          <mat-icon>{{ isMicrophoneEnabled() ? 'mic' : 'mic_off' }}</mat-icon>
         </button>
       </div>
       </div>

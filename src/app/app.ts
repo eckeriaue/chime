@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, signal } from '@angular/core'
 import { RouterOutlet } from '@angular/router'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatButtonModule } from '@angular/material/button'
@@ -12,4 +12,7 @@ import { MatIconModule } from '@angular/material/icon'
 })
 export class App {
   protected title = 'chime'
+
+ isMicrophoneEnabled = signal(false)
+ isHeadphonesEnabled = signal(false)
 }
