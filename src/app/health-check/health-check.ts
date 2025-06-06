@@ -1,5 +1,5 @@
 import { Component } from '@angular/core'
-import { StreamVideoAndMicSelfMonitoringComponent } from '../stream-video-and-mic-self-monitoring-component/stream-video-and-mic-self-monitoring-component'
+import { StreamVideoAndMicSelfMonitoringComponent } from '../self-monitoring/self-monitoring'
 
 @Component({
   selector: 'app-health-check',

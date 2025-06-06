@@ -6,10 +6,10 @@ import {MatSnackBar} from '@angular/material/snack-bar'
 
 
 @Component({
-  selector: 'app-stream-video-and-mic-self-monitoring',
+  selector: 'app-self-monitoring',
   imports: [MatButtonModule, MatIconModule],
-  templateUrl: './stream-video-and-mic-self-monitoring-component.html',
-  styleUrl: './stream-video-and-mic-self-monitoring-component.css'
+  templateUrl: './self-monitoring.html',
+  styleUrl: './self-monitoring.css'
 })
 export class StreamVideoAndMicSelfMonitoringComponent {
   protected videoStream: WritableSignal<MediaStream | null> = signal(null)
