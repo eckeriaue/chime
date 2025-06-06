@@ -5,12 +5,12 @@ import { uid } from 'radashi'
 import { MatSnackBar } from '@angular/material/snack-bar'
 
 @Component({
-  selector: 'app-create-invite',
+  selector: 'app-create-room',
   imports: [MatButtonModule],
-  templateUrl: './create-invite.html',
-  styleUrl: './create-invite.css'
+  templateUrl: './create-room.html',
+  styleUrl: './create-room.css'
 })
-export class CreateInviteComponent {
+export class CreateRoomComponent {
   constructor(
     private clipboard: Clipboard,
   ) {}
