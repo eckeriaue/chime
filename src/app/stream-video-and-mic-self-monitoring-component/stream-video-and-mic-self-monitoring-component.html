@@ -1,0 +1,20 @@
+<div class="size-full flex-col flex items-center justify-center">
+
+  <video
+    autoplay="true"
+    muted="true"
+    playsinline
+    #videoElement
+    width="300"
+    height="225"
+    class="bg-(--mat-sys-inverse-on-surface) rounded-3xl"></video>
+
+  <div class="flex gap-x-3 mt-2">
+    <button matIconButton [disabled]="videoLoading()" type="button" (click)="enableVideo()">
+      <mat-icon>{{videoStream() ? 'videocam' : 'videocam_off'}}</mat-icon>
+    </button>
+    <button matIconButton type="button">
+      <mat-icon>mic_off</mat-icon>
+    </button>
+  </div>
+</div>

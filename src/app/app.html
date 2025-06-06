@@ -7,24 +7,4 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<div class="bg-(--mat-sys-background) text-(--mat-sys-secondary-fixed-dim)  flex h-full w-full">
-  <div class="h-[inherit] w-1/4 flex">
-    <div class="w-full flex justify-end items-end">
-      <div class="w-full">
-      <mat-divider />
-      <div class="p-3 flex justify-end gap-x-3">
-        <button matIconButton>
-          <mat-icon>{{ isHeadphonesEnabled() ? 'headset' : 'headset_off' }}</mat-icon>
-        </button>
-        <button matIconButton>
-          <mat-icon>{{ isMicrophoneEnabled() ? 'mic' : 'mic_off' }}</mat-icon>
-        </button>
-      </div>
-      </div>
-    </div>
-    <mat-divider vertical class="border-(--mat-sys-outline)"></mat-divider>
-  </div>
-  test me
-</div>
-
 <router-outlet />
