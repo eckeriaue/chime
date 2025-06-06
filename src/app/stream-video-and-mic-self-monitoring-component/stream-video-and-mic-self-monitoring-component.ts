@@ -18,7 +18,10 @@ export class StreamVideoAndMicSelfMonitoringComponent {
   protected videoElement: ElementRef<HTMLVideoElement> | undefined
   private snackbar = inject(MatSnackBar)
 
-  async enableVideo() {
+  protected micStream: WritableSignal<MediaStream | null> = signal(null)
+  protected micLoading = signal(false)
+
+  async toggleVideo() {
     this.videoLoading.set(true)
     if (this.videoStream()) {
       this.videoStream()!.getTracks().forEach(track => track.stop())
@@ -44,5 +47,26 @@ export class StreamVideoAndMicSelfMonitoringComponent {
       }
     }
     this.videoLoading.set(false)
+  }
+
+  async toggleMic() {
+    this.micLoading.set(true)
+    if (this.micStream()) {
+      this.micStream()!.getTracks().forEach(track => track.stop())
+      this.micStream.set(null)
+    } else {
+      const stream = await navigator.mediaDevices.getUserMedia({ audio: true })
+        .catch(error => {
+          console.error('Error accessing microphone:', error)
+          this.snackbar.open('Ошибка доступа к микрофону', 'Закрыть', {
+            duration: 3000
+          })
+          return null
+        })
+      if (stream) {
+        this.micStream.set(stream)
+      }
+    }
+    this.micLoading.set(false)
   }
 }

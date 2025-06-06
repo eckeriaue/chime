@@ -7,14 +7,24 @@
     #videoElement
     width="300"
     height="225"
-    class="bg-(--mat-sys-inverse-on-surface) rounded-3xl"></video>
+    class="bg-(--mat-sys-inverse-on-surface) rounded-3xl pointer-events-none"></video>
 
   <div class="flex gap-x-3 mt-2">
-    <button matIconButton [disabled]="videoLoading()" type="button" (click)="enableVideo()">
+    <button
+      matIconButton
+      [disabled]="videoLoading()"
+      type="button"
+      (click)="toggleVideo()"
+    >
       <mat-icon>{{videoStream() ? 'videocam' : 'videocam_off'}}</mat-icon>
     </button>
-    <button matIconButton type="button">
-      <mat-icon>mic_off</mat-icon>
+    <button
+      matIconButton
+      [disabled]="micLoading()"
+      type="button"
+      (click)="toggleMic()"
+    >
+      <mat-icon>{{micStream() ? 'mic' : 'mic_off'}}</mat-icon>
     </button>
   </div>
 </div>
