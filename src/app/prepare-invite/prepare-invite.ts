@@ -2,11 +2,11 @@ import { Component } from '@angular/core'
 import { StreamVideoAndMicSelfMonitoringComponent } from '../self-monitoring/self-monitoring'
 
 @Component({
-  selector: 'app-health-check',
+  selector: 'app-prepare-invite',
   imports: [StreamVideoAndMicSelfMonitoringComponent],
-  templateUrl: './health-check.html',
-  styleUrl: './health-check.css'
+  templateUrl: './prepare-invite.html',
+  styleUrl: './prepare-invite.css'
 })
-export class HealthCheckComponent {
+export class PrepareInviteComponent {
 
 }
