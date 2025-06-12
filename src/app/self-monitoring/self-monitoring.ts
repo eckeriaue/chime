@@ -57,6 +57,8 @@ export class StreamVideoAndMicSelfMonitoringComponent {
   @ViewChild('videoElement')
   protected videoElement: ElementRef<HTMLVideoElement> | undefined
   protected videoStream: WritableSignal<MediaStream | null> = signal(null)
+  protected micStream: WritableSignal<MediaStream | null> = signal(null)
+  protected micLoading = signal(false)
   protected videoLoading = signal(false)
   protected userName = model('')
   protected password = model(null)
@@ -67,8 +69,6 @@ export class StreamVideoAndMicSelfMonitoringComponent {
     return this.route.snapshot.paramMap.get('uid')
   })
 
-  protected micStream: WritableSignal<MediaStream | null> = signal(null)
-  protected micLoading = signal(false)
 
   async toggleVideo() {
     this.videoLoading.set(true)
