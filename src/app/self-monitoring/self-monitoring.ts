@@ -1,22 +1,32 @@
 
-import { Component, ElementRef, inject, signal, ViewChild, type WritableSignal } from '@angular/core'
+import { Component, computed, ElementRef, inject, signal, ViewChild, type WritableSignal } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import {MatSnackBar} from '@angular/material/snack-bar'
+import { RouterLink, Router, ActivatedRoute } from '@angular/router'
 
 
 @Component({
   selector: 'app-self-monitoring',
-  imports: [MatButtonModule, MatIconModule],
+  imports: [MatButtonModule, MatIconModule, RouterLink],
   templateUrl: './self-monitoring.html',
   styleUrl: './self-monitoring.css'
 })
 export class StreamVideoAndMicSelfMonitoringComponent {
-  protected videoStream: WritableSignal<MediaStream | null> = signal(null)
-  protected videoLoading = signal(false)
+
+  constructor(
+    private route: ActivatedRoute
+  ) {}
+
   @ViewChild('videoElement')
   protected videoElement: ElementRef<HTMLVideoElement> | undefined
+  protected videoStream: WritableSignal<MediaStream | null> = signal(null)
+  protected videoLoading = signal(false)
   private snackbar = inject(MatSnackBar)
+
+  protected hash = computed(() => {
+    return this.route.snapshot.paramMap.get('uid')
+  })
 
   protected micStream: WritableSignal<MediaStream | null> = signal(null)
   protected micLoading = signal(false)

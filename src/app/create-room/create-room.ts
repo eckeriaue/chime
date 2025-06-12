@@ -23,7 +23,7 @@ export class CreateRoomComponent implements OnInit, OnDestroy {
   protected inviteHash = signal<string>('')
   private inviteLink = computed(() => {
     if (this.inviteHash()) {
-      return `${globalThis.location.origin}/invite/${this.inviteHash()}`
+      return `${globalThis.location.origin}/room/${this.inviteHash()}/prepare`
     }
     return ''
   })
@@ -37,7 +37,7 @@ export class CreateRoomComponent implements OnInit, OnDestroy {
         duration: 3000,
       })
 
-      this.router.navigate(['/invite', this.inviteHash()])
+      this.router.navigate(['/room', this.inviteHash(), 'prepare'])
     }
   }
 

@@ -1,30 +1,35 @@
-<div class="size-full flex-col flex items-center justify-center">
+<div class="size-full items-center justify-center flex gap-x-3">
+  <div class="h-full flex-col flex items-center justify-center">
+    <video
+      autoplay="true"
+      muted="true"
+      playsinline
+      #videoElement
+      width="300"
+      height="225"
+      class="bg-(--mat-sys-inverse-on-surface) rounded-3xl pointer-events-none"></video>
 
-  <video
-    autoplay="true"
-    muted="true"
-    playsinline
-    #videoElement
-    width="300"
-    height="225"
-    class="bg-(--mat-sys-inverse-on-surface) rounded-3xl pointer-events-none"></video>
+    <div class="flex gap-x-3 mt-2">
+      <button
+        matIconButton
+        [disabled]="videoLoading()"
+        type="button"
+        (click)="toggleVideo()"
+      >
+        <mat-icon>{{videoStream() ? 'videocam' : 'videocam_off'}}</mat-icon>
+      </button>
+      <button
+        matIconButton
+        [disabled]="micLoading()"
+        type="button"
+        (click)="toggleMic()"
+      >
+        <mat-icon>{{micStream() ? 'mic' : 'mic_off'}}</mat-icon>
+      </button>
+    </div>
+  </div>
 
-  <div class="flex gap-x-3 mt-2">
-    <button
-      matIconButton
-      [disabled]="videoLoading()"
-      type="button"
-      (click)="toggleVideo()"
-    >
-      <mat-icon>{{videoStream() ? 'videocam' : 'videocam_off'}}</mat-icon>
-    </button>
-    <button
-      matIconButton
-      [disabled]="micLoading()"
-      type="button"
-      (click)="toggleMic()"
-    >
-      <mat-icon>{{micStream() ? 'mic' : 'mic_off'}}</mat-icon>
-    </button>
+  <div>
+    <a matButton routerLink="/room/{{hash()}}">Войти</a>
   </div>
 </div>
