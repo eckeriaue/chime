@@ -1,4 +1,4 @@
-import { Component, inject, computed, signal } from '@angular/core'
+import { Component, inject, computed, signal, type OnInit, type OnDestroy } from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
@@ -13,7 +13,7 @@ import { Router } from '@angular/router'
   templateUrl: './create-room.html',
   styleUrl: './create-room.css'
 })
-export class CreateRoomComponent {
+export class CreateRoomComponent implements OnInit, OnDestroy {
   constructor(
     private clipboard: Clipboard,
   ) {}
@@ -39,5 +39,11 @@ export class CreateRoomComponent {
 
       this.router.navigate(['/invite', this.inviteHash()])
     }
+  }
+
+  ngOnInit(): void {
+  }
+
+  ngOnDestroy(): void {
   }
 }
