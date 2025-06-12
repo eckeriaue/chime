@@ -29,10 +29,14 @@
     </div>
   </div>
 
-  <form class="flex flex-col" (submit)="gotoMeet()">
+  <form class="flex flex-col" style="min-width:332px" (submit)="gotoMeet()">
     <mat-form-field>
       <mat-label>Введите ваше имя</mat-label>
-      <input matInput name="userName" [(ngModel)]="userName" />
+      <input matInput required name="userName" [(ngModel)]="userName" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Пароль (если требуется)</mat-label>
+      <input matInput name="password" [(ngModel)]="password" />
     </mat-form-field>
     <button
       type="submit"

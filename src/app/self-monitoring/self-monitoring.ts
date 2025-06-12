@@ -1,12 +1,25 @@
 
-import { Component, computed, ElementRef, inject, model, signal, ViewChild, type WritableSignal } from '@angular/core'
+import {
+  Component,
+  DOCUMENT,
+  ElementRef,
+  Inject,
+  ViewChild,
+  computed,
+  effect,
+  inject,
+  model,
+  signal,
+  type WritableSignal
+} from '@angular/core'
 import { MatButtonModule } from '@angular/material/button'
 import { MatIconModule } from '@angular/material/icon'
 import {MatSnackBar} from '@angular/material/snack-bar'
-import { RouterLink, ActivatedRoute, Router } from '@angular/router'
+import { ActivatedRoute, Router } from '@angular/router'
 import {MatInputModule} from '@angular/material/input'
 import {MatFormFieldModule} from '@angular/material/form-field'
 import {FormsModule} from '@angular/forms'
+import { CommonModule } from '@angular/common'
 
 
 
@@ -15,10 +28,10 @@ import {FormsModule} from '@angular/forms'
   imports: [
     MatButtonModule,
     MatIconModule,
-    RouterLink,
     MatInputModule,
     MatFormFieldModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   standalone: true,
   templateUrl: './self-monitoring.html',
@@ -27,14 +40,26 @@ import {FormsModule} from '@angular/forms'
 export class StreamVideoAndMicSelfMonitoringComponent {
 
   constructor(
-    private route: ActivatedRoute
-  ) {}
+    private route: ActivatedRoute,
+    @Inject(DOCUMENT) private document: Document
+  ) {
+    const localStorage = this.document.defaultView?.localStorage
+    if (localStorage) {
+      if (localStorage.getItem('userName')) {
+        this.userName.set(localStorage.getItem('userName')!)
+      }
+      effect(() => {
+        localStorage.setItem('userName', this.userName())
+      })
+    }
+  }
 
   @ViewChild('videoElement')
   protected videoElement: ElementRef<HTMLVideoElement> | undefined
   protected videoStream: WritableSignal<MediaStream | null> = signal(null)
   protected videoLoading = signal(false)
   protected userName = model('')
+  protected password = model(null)
   private snackbar = inject(MatSnackBar)
   private router = inject(Router)
 
