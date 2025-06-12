@@ -7,12 +7,12 @@ export const routes: Routes = [
   },
   {
     title: 'Room',
-    path: 'room/:uid',
+    path: 'rooms/:uid',
     loadComponent: () => import('./room/room').then(m => m.RoomComponent),
   },
   {
     title: 'Invite',
-    path: 'room/:uid/prepare',
+    path: 'rooms/:uid/prepare',
     loadComponent: () => import('./prepare-invite/prepare-invite').then(m => m.PrepareInviteComponent),
   },
 ]

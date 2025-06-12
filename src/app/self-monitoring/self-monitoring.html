@@ -29,7 +29,17 @@
     </div>
   </div>
 
-  <div>
-    <a matButton routerLink="/room/{{hash()}}">Войти</a>
-  </div>
+  <form class="flex flex-col" (submit)="gotoMeet()">
+    <mat-form-field>
+      <mat-label>Введите ваше имя</mat-label>
+      <input matInput name="userName" [(ngModel)]="userName" />
+    </mat-form-field>
+    <button
+      type="submit"
+      matButton="outlined"
+      [disabled]="!userName()"
+    >
+      Войти
+    </button>
+  </form>
 </div>
