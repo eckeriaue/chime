@@ -23,6 +23,7 @@ import { CreateRoomDialogComponent } from '../create-room-dialog/create-room-dia
 })
 export class LobbyComponent {
   readonly createRoomDialog = inject(MatDialog)
+  protected rooms = signal([])
 
 
   openCreateRoomDialog() {

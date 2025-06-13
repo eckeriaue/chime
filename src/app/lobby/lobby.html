@@ -5,13 +5,17 @@
       <button matButton (click)="openCreateRoomDialog()">Создать комнату</button>
     </div>
     <mat-nav-list>
-      @for (num of [1,2,3,4,5]; track num) {
+      @for (num of rooms(); track num) {
         <mat-list-item>
           <a matListItemTitle>test</a>
           <button matIconButton matListItemMeta>
             <mat-icon>open_in_new</mat-icon>
           </button>
         </mat-list-item>
+      }  @empty {
+      <mat-list-item>
+        <p class="text-center text-(--mat-sys-secondary)">Открытых комнат нет.</p>
+      </mat-list-item>
       }
     </mat-nav-list>
   </div>
