@@ -1,9 +1,8 @@
-import { Component, OnInit, resource, signal, PLATFORM_ID, Inject } from '@angular/core'
+import { Component, OnInit, signal, PLATFORM_ID, Inject } from '@angular/core'
 import { isPlatformBrowser } from '@angular/common'
 import {
   MatProgressBarModule
 } from '@angular/material/progress-bar'
-import { constrainedMemory } from 'node:process'
 
 
 @Component({
@@ -27,19 +26,12 @@ export class RoomComponent implements OnInit {
       const persmissionMic = await navigator.permissions.query({ name: 'microphone' })
       const permissionCam = await navigator.permissions.query({ name: 'camera' })
       this.pc = new RTCPeerConnection()
-      let cameraStream
-      let audioStream
-      if (permissionCam.state === 'granted') {
-        cameraStream = await navigator.mediaDevices.getUserMedia({ video: true })
-      }
-      if (persmissionMic.state === 'granted') {
-        audioStream = await navigator.mediaDevices.getUserMedia({ audio: true })
-      }
-      ;[
-        ...(cameraStream ? cameraStream.getTracks() : []),
-        ...(audioStream ? audioStream.getTracks() : []),
-      ].forEach(track => {
-        this.pc!.addTrack(track)
+      const stream = await navigator.mediaDevices.getUserMedia({
+        video: permissionCam.state === 'granted',
+        audio: persmissionMic.state === 'granted'
+      })
+      stream.getTracks().forEach(track => {
+        this.pc!.addTrack(track, stream)
       })
 
       const offer = await this.pc!.createOffer()
