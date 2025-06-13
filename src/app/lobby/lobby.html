@@ -2,7 +2,7 @@
   <div class="p-6 grow">
     <div class="flex justify-between items-center">
       <h2 class="text-2xl text-(--mat-sys-secondary) mb-4">Доступные комнаты</h2>
-      <button matButton>Создать комнату</button>
+      <button matButton (click)="openCreateRoomDialog()">Создать комнату</button>
     </div>
     <mat-nav-list>
       @for (num of [1,2,3,4,5]; track num) {

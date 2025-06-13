@@ -1,0 +1,19 @@
+<h2 mat-dialog-title>Создание комнаты <b>{{ staticUid }}</b></h2>
+<form class="size-full contents" (ngSubmit)="createRoom($event)">
+  <mat-dialog-content>
+    <mat-form-field class="w-3/5">
+      <mat-label>Название комнаты</mat-label>
+      <input matInput [(ngModel)]="roomName" required name="roomName" />
+    </mat-form-field>
+
+    <mat-form-field class="w-3/5">
+      <mat-label>Пароль</mat-label>
+      <input matInput [(ngModel)]="roomPassword" name="roomPassword" />
+    </mat-form-field>
+
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button matButton type="reset" mat-dialog-close>Закрыть</button>
+    <button matButton cdkFocusInitial [disabled]="!roomName()" type="submit">Создать</button>
+  </mat-dialog-actions>
+</form>
