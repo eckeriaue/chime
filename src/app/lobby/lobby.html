@@ -1,20 +1,19 @@
-
-<div class="bg-(--mat-sys-background) text-(--mat-sys-secondary-fixed-dim)  flex h-full w-full">
-  <div class="h-[inherit] w-1/4 flex">
-    <div class="w-full flex justify-end items-end">
-      <div class="w-full">
-      <mat-divider />
-      <div class="p-3 flex justify-end gap-x-3">
-        <button matIconButton (click)="toggleHeadphones()">
-          <mat-icon>{{ isHeadphonesEnabled() ? 'headphones' : 'headset_off' }}</mat-icon>
-        </button>
-        <button matIconButton (click)="toggleMicrophone()">
-          <mat-icon>{{ isMicrophoneEnabled() ? 'mic' : 'mic_off' }}</mat-icon>
-        </button>
-      </div>
-      </div>
+<section class="w-3/5 flex size-full">
+  <div class="p-6 grow">
+    <div class="flex justify-between items-center">
+      <h2 class="text-2xl text-(--mat-sys-secondary) mb-4">Доступные комнаты</h2>
+      <button matButton>Создать комнату</button>
     </div>
-    <mat-divider vertical class="border-(--mat-sys-outline)"></mat-divider>
+    <mat-nav-list>
+      @for (num of [1,2,3,4,5]; track num) {
+        <mat-list-item>
+          <a matListItemTitle>test</a>
+          <button matIconButton matListItemMeta>
+            <mat-icon>open_in_new</mat-icon>
+          </button>
+        </mat-list-item>
+      }
+    </mat-nav-list>
   </div>
-  test me
-</div>
+  <mat-divider vertical />
+</section>
