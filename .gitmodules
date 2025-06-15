@@ -1,0 +1,3 @@
+[submodule "src/shimmer"]
+	path = src/shimmer
+	url = git@github.com:eckeriaue/shimmer.git

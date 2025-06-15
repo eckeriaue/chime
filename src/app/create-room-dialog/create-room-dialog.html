@@ -1,5 +1,5 @@
-<h2 mat-dialog-title>Создание комнаты <b>{{ staticUid }}</b></h2>
-<form class="size-full contents" (ngSubmit)="createRoom($event)">
+<h2 mat-dialog-title>Создание комнаты <b>{{ roomUid }}</b></h2>
+<form class="size-full contents" id="createRoom" (ngSubmit)="createRoom()">
   <mat-dialog-content>
     <mat-form-field class="w-3/5">
       <mat-label>Название комнаты</mat-label>
