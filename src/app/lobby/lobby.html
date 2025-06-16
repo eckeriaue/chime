@@ -5,9 +5,13 @@
       <button matButton (click)="openCreateRoomDialog()">Создать комнату</button>
     </div>
     <mat-nav-list>
-      @for (num of rooms(); track num) {
-        <mat-list-item>
-          <a matListItemTitle>test</a>
+      @for (room of rooms.value(); track room.roomUid) {
+        <mat-list-item class="relative">
+          <a
+            matListItemTitle
+            [routerLink]="['/rooms/' + room.roomUid + '/prepare']"
+            class="before:absolute before:inset-0 before:size-full"
+          >{{ room.roomName }}</a>
           <button matIconButton matListItemMeta>
             <mat-icon>open_in_new</mat-icon>
           </button>
